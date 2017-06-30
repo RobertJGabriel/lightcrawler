@@ -1,6 +1,8 @@
 # lightcrawler
 Crawl a website and run it through Google lighthouse
 
+Remember this will up headless chrome instances.
+
 
 ## Introduction
 ```node
