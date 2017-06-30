@@ -1,13 +1,19 @@
 # lightcrawler
 Crawl a website and run it through Google lighthouse
 
+
+## Introduction
 ```
-npm install --save lightcrawler
+
+npm install --save lightcrawler --g
 
 lightcrawler --url https://atom.io/ --config lightcrawler-config.json
+
 ```
 
-where `lightcrawler-config.json` looks something like this:
+
+## lightcrawler-config.json
+
 ```
 {
   "extends": "lighthouse:default",
@@ -37,5 +43,7 @@ where `lightcrawler-config.json` looks something like this:
   }
 }
 ```
+
+## Remember
 
 Enjoy!
