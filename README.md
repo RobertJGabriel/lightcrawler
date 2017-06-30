@@ -3,7 +3,7 @@ Crawl a website and run it through Google lighthouse
 
 
 ## Introduction
-```
+```node
 
 npm install --save lightcrawler --g
 
