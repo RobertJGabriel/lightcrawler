@@ -14,7 +14,7 @@ lightcrawler --url https://atom.io/ --config lightcrawler-config.json
 
 ## lightcrawler-config.json
 
-```
+```json
 {
   "extends": "lighthouse:default",
   "settings": {
