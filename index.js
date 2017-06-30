@@ -151,9 +151,8 @@ function runLighthouse (url, configPath, callback) {
 }
 
 function printStats() {
-  console.log();
-  console.log();
-  console.log('Lighthouse Summary'.bold.underline);
+
+  console.log('\n \n Lighthouse Summary'.bold.underline);
   console.log(`  Total Pages Scanned: ${stats.pageCount}`);
   console.log(`  Total Auditing Time: ${new Date() - stats.startTime} ms`);
   const totalTime = Object.keys(stats.auditTimesByPageUrl).reduce((sum, url) => {
