@@ -5,6 +5,7 @@ const path = require('path')
 const queue = require('async/queue')
 const fs = require('fs')
 const colors = require('colors')
+const sprintf = require("sprintf-js").sprintf
 
 const stats = {
   pageCount: 0,
@@ -152,14 +153,19 @@ function runLighthouse (url, configPath, callback) {
 
 function printStats() {
 
-  console.log('\n \n Lighthouse Summary'.bold.underline + '\n');
-  console.log(`  Total Pages Scanned: `.bold +  stats.pageCount);
-  console.log(`  Total Auditing Time: `.bold +  new Date() - stats.startTime + `ms`);
+  console.log('Lighthouse Summary'.bold.underline);
+  console.log(sprintf("Total Pages Scanned: %10.2f".bold, stats.pageCount));
+  console.log(sprintf("Total Auditing Time: %10.2f".bold, new Date() - stats.startTime + `ms`));
+
   const totalTime = Object.keys(stats.auditTimesByPageUrl).reduce((sum, url) => {
     const {endTime, startTime} = stats.auditTimesByPageUrl[url]
     return (endTime - startTime) + sum
   }, 0)
-  console.log(`  Average Page Audit Time: `.bold + Math.round(totalTime/stats.pageCount) + `ms`);
+
+
+  console.log(sprintf("Total Auditing Time: %10.2f".bold, new Date() - stats.startTime + `ms`));
+
+  console.log(`Total Audits Passed:  %10.2f`.bold + Math.round(totalTime/stats.pageCount) + `ms`);
   console.log(`  Total Audits Passed: `.bold + stats.passedAuditsCount + `, '\u2713'`.green);
   if (Object.keys(stats.violationCounts).length === 0) {
     console.log(`  Total Violations: `.bold + `None! \\o/ 🎉`);
