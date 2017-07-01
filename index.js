@@ -152,19 +152,19 @@ function runLighthouse (url, configPath, callback) {
 
 function printStats() {
 
-  console.log('\n \n Lighthouse Summary'.bold.underline);
-  console.log(`  Total Pages Scanned: ${stats.pageCount}`);
-  console.log(`  Total Auditing Time: ${new Date() - stats.startTime} ms`);
+  console.log('\n \n Lighthouse Summary'.bold.underline + '\n');
+  console.log(`  Total Pages Scanned: `.bold +  stats.pageCount);
+  console.log(`  Total Auditing Time: `.bold +  new Date() - stats.startTime + `ms`);
   const totalTime = Object.keys(stats.auditTimesByPageUrl).reduce((sum, url) => {
     const {endTime, startTime} = stats.auditTimesByPageUrl[url]
     return (endTime - startTime) + sum
   }, 0)
-  console.log(`  Average Page Audit Time: ${Math.round(totalTime/stats.pageCount)} ms`);
-  console.log(`  Total Audits Passed: ${stats.passedAuditsCount}`, '\u2713'.green);
+  console.log(`  Average Page Audit Time: `.bold + Math.round(totalTime/stats.pageCount) + `ms`);
+  console.log(`  Total Audits Passed: `.bold + stats.passedAuditsCount + `, '\u2713'`.green);
   if (Object.keys(stats.violationCounts).length === 0) {
-    console.log(`  Total Violations: None! \\o/ 🎉`);
+    console.log(`  Total Violations: `.bold + `None! \\o/ 🎉`);
   } else {
-    console.log(`  Total Violations:`);
+    console.log(`  Total Violations:`.bold);
     Object.keys(stats.violationCounts).forEach(category => {
       console.log(`    ${category}: ${stats.violationCounts[category]}`, '\u2717'.red);
     })
